@@ -3,7 +3,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/modernmcguire/mailthief.svg?style=flat-square)](https://packagist.org/packages/modernmcguire/mailthief)
 [![Total Downloads](https://img.shields.io/packagist/dt/modernmcguire/mailthief.svg?style=flat-square)](https://packagist.org/packages/modernmcguire/mailthief)
-![GitHub Actions](https://github.com/modernmcguire/mailthief/actions/workflows/main.yml/badge.svg)
+
 ![MailThief Logo](https://raw.githubusercontent.com/modernmcguire/mailthief/main/resources/assets/icon.png)
 
 
