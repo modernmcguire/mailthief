@@ -17,10 +17,16 @@ You can install the package via composer:
 composer require modernmcguire/mailthief
 ```
 
-Update your `.env` file
+1. Update your `.env` file
 
 ```env
 MAIL_MAILER=mailthief
+```
+
+2. Run migrations
+
+```bash
+php artisan migrate
 ```
 
 ### And that's it!
