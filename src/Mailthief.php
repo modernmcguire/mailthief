@@ -1,8 +1,20 @@
 <?php
 
-namespace Modernmcguire\MailThief;
+namespace ModernMcGuire\MailThief;
 
-class MailThief
+use Illuminate\Database\Eloquent\Model;
+
+class MailThief extends Model
 {
-    // Build your next great package.
+    protected $table = 'mailthief';
+
+    protected $guarded = [];
+
+    protected $casts = [
+        'from' => 'array',
+        'to' => 'array',
+        'cc' => 'array',
+        'bcc' => 'array',
+        'attachments' => 'array',
+    ];
 }

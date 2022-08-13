@@ -1,11 +1,11 @@
 <?php
 
-namespace Modernmcguire\MailThief;
+namespace ModernMcGuire\MailThief;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Modernmcguire\MailThief\Skeleton\SkeletonClass
+ * @see \ModernMcGuire\MailThief\Skeleton\SkeletonClass
  */
 class MailThiefFacade extends Facade
 {
