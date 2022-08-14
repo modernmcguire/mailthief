@@ -31,6 +31,13 @@ php artisan migrate
 
 ### And that's it!
 
+## Usage
+
+You can publish the config using Laravel's built in `php artisan vendor:publish`
+
+The UI can be found at /dev/emails.
+This path is configurable via the config file.
+
 ### Testing
 
 ```bash
