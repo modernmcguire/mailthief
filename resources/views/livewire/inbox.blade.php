@@ -120,7 +120,7 @@
             <div class="card" id="empty">
                 <div class="card-body">
                     <h5 class="card-title">No email selected</h5>
-                    <div class="card-text">Please select an email from the list above.</div>
+                    <div class="card-text">Please select an email from the list.</div>
                 </div>
             </div>
         @endif

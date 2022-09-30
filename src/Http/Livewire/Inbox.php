@@ -14,7 +14,7 @@ class Inbox extends Component
     public function mount()
     {
         $this->emails = MailThief::latest()->get(['id','from','subject','attachments','created_at']);
-        $this->email = $this->emails->first()->refresh();
+        $this->email = $this->emails->first()?->refresh();
     }
 
     public function selectEmail($id)
