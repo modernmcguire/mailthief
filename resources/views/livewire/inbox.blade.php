@@ -7,7 +7,7 @@
                         <div>
                             <span class="text-primary">{{ $singleEmail->subject }}</span><br />
                             <span class="text-muted text-sm">
-                                {{ collect($singleEmail->from)->pluck('email')->join(', ') }}
+                                {{ collect($singleEmail->to)->pluck('email')->join(', ') }}
                             </span><br />
                             <span class="form-text">({{ $singleEmail->created_at->toDateTimeLocalString() }})</span>
                         </div>
