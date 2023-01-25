@@ -1,6 +1,6 @@
 {
     "name": "modernmcguire/mailthief",
-    "description": "A package to catch outbound mail (similar to Mailtrap) that also provides a UI to view them.",
+    "description": "A Laravel package to catch outbound mail (similar to Mailtrap) that also provides a UI to view them.",
     "keywords": [
         "modernmcguire",
         "mailthief",
