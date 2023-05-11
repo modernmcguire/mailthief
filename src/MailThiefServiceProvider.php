@@ -3,6 +3,7 @@
 namespace ModernMcGuire\MailThief;
 
 use Livewire\Livewire;
+use Illuminate\Mail\MailManager;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
 use ModernMcGuire\MailThief\MailThiefTransport;
@@ -18,8 +19,10 @@ class MailThiefServiceProvider extends ServiceProvider
     {
         config()->set('mail.mailers.mailthief', ['transport' => 'mailthief']);
 
-        Mail::extend('mailthief', function (array $config = []) {
-            return new MailThiefTransport();
+        $this->app->afterResolving(MailManager::class, function (MailManager $mail_manager) {
+            $mail_manager->extend("mailthief", function () {
+               return new MailThiefTransport();
+            });
         });
 
         if (!$this->app->runningInConsole()) {
