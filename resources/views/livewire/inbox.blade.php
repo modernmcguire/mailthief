@@ -1,5 +1,16 @@
 <div class="row">
     <div class="col-md-4">
+        <div class="form-group mb-3">
+            <label for="search" class="visually-hidden">Search...</label>
+            <input
+                type="search"
+                class="form-control"
+                id="search"
+                placeholder="Search"
+                wire:model.debounce.500ms="search"
+            />
+        </div>
+
         <div>
             {{ $emails->links() }}
         </div>
