@@ -1,13 +1,15 @@
 # Mailthief
+
 ## A drop-in replacement for Mailtrap
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/modernmcguire/mailthief.svg?style=flat-square)](https://packagist.org/packages/modernmcguire/mailthief)
 [![Total Downloads](https://img.shields.io/packagist/dt/modernmcguire/mailthief.svg?style=flat-square)](https://packagist.org/packages/modernmcguire/mailthief)
 
-![MailThief Logo](https://raw.githubusercontent.com/modernmcguire/mailthief/main/resources/assets/icon.png)
-
 
 A custom Laravel mailer that captures outbound emails, saves them to the database, and provides a clean UI for viewing. For a local environment you have wonderful tools like HELO or Mailhog. For dev environments, there's really only Mailtrap. This is meant to replace that.
+
+![Alt text](https://raw.githubusercontent.com/modernmcguire/mailthief/main/SCREENSHOT.png?raw=true "MailThief Screenshot")
+
 
 ## Installation
 
