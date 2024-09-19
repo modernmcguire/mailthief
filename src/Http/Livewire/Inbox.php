@@ -28,10 +28,7 @@ class Inbox extends Component
     {
         $emails = MailThief::latest()
             ->limit(self::EMAILS_PAGE_LIMIT)
-            ->paginate(
-                self::EMAILS_PAGE_LIMIT,
-                ['id','from','subject','attachments','created_at']
-            )
+            ->paginate(self::EMAILS_PAGE_LIMIT)
             ->onEachSide(1);
 
         return view('mailthief::livewire.inbox', [
