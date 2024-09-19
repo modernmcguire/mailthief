@@ -12,6 +12,7 @@ class Inbox extends Component
 
     private const EMAILS_PAGE_LIMIT = 10;
 
+    public $email = null;
     public $search = '';
 
     public function mount()
@@ -31,13 +32,14 @@ class Inbox extends Component
 
     public function render()
     {
-        $emails = MailThief::latest()
+        $emails = MailThief::query()
             ->when($this->search, function($query, $search) {
                 return $query
                     ->where('subject', 'like', "%{$search}%")
                     ->orWhere('text', 'like', "%{$search}%")
                     ->orWhere('html', 'like', "%{$search}%");
             })
+            ->latest()
             ->limit(self::EMAILS_PAGE_LIMIT)
             ->paginate(self::EMAILS_PAGE_LIMIT)
             ->onEachSide(1);

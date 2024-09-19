@@ -17,14 +17,28 @@
 
         <ul class="list-group">
             @foreach ($emails as $singleEmail)
-                <li class="list-group-item" role="button" wire:click="selectEmail({{ $singleEmail->id }})" style="{{ !empty($email) && $email->id == $singleEmail->id ? 'background-color: var(--bs-gray-300)' : '' }}">
+                <li
+                    @class([
+                        'list-group-item',
+                        'bg-dark-subtle' => !empty($email) && $email->id == $singleEmail->id,
+                    ])
+                    role="button"
+                    wire:click="selectEmail({{ $singleEmail->id }})"
+                    wire:key="email-{{ $singleEmail->id }}"
+                >
                     <div class="d-flex justify-content-between">
                         <div>
                             <span class="text-primary">{{ $singleEmail->subject }}</span><br />
                             <span class="text-muted text-sm">
                                 {{ collect($singleEmail->to)->pluck('email')->join(', ') }}
                             </span><br />
-                            <span class="form-text">({{ $singleEmail->created_at->toDateTimeLocalString() }})</span>
+                            <span class="form-text">
+                                @if($singleEmail->created_at < now()->subDay())
+                                    {{ $singleEmail->created_at->toDateTimeLocalString() }}
+                                @else
+                                    {{ $singleEmail->created_at->diffForHumans() }}
+                                @endif
+                            </span>
                         </div>
                         <div class="d-flex flex-column justify-content-around align-items-center">
                             <span class="badge bg-secondary badge-pill">#{{ $singleEmail->id }}</span>
@@ -89,13 +103,13 @@
             </table>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="html-tab" data-bs-toggle="tab" data-bs-target="#html-tab-pane" type="button" role="tab" aria-controls="html-tab-pane" aria-selected="true">HTML</button>
+                    <button class="nav-link {{ $email->html ? 'active' : '' }}" id="html-tab" data-bs-toggle="tab" data-bs-target="#html-tab-pane" type="button" role="tab" aria-controls="html-tab-pane" aria-selected="true">HTML</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="source-tab" data-bs-toggle="tab" data-bs-target="#source-tab-pane" type="button" role="tab" aria-controls="source-tab-pane" aria-selected="false">HTML Source</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="text-tab" data-bs-toggle="tab" data-bs-target="#text-tab-pane" type="button" role="tab" aria-controls="text-tab-pane" aria-selected="false">Text</button>
+                    <button class="nav-link {{ !$email->html && $email->text ? 'active' : '' }}" id="text-tab" data-bs-toggle="tab" data-bs-target="#text-tab-pane" type="button" role="tab" aria-controls="text-tab-pane" aria-selected="false">Text</button>
                 </li>
                 @if($email->attachments)
                     <li class="nav-item" role="presentation" id="attachments">
@@ -104,7 +118,7 @@
                 @endif
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="html-tab-pane" role="tabpanel" aria-labelledby="html-tab" tabindex="0">
+                <div class="tab-pane fade {{ $email->html ? 'show active' : '' }}" id="html-tab-pane" role="tabpanel" aria-labelledby="html-tab" tabindex="0">
                     <div class="border">
                         <iframe class="w-100" style="height: 800px;" srcdoc="{{ $email->html }}"></iframe>
                     </div>
@@ -114,7 +128,7 @@
                         <code><pre>{{ $email->html }}</pre></code>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="text-tab-pane" role="tabpanel" aria-labelledby="text-tab" tabindex="0">
+                <div class="tab-pane fade {{ !$email->html && $email->text ? 'show active' : '' }}" id="text-tab-pane" role="tabpanel" aria-labelledby="text-tab" tabindex="0">
                     <div class="border bg-white p-3">
                         {!! nl2br($email->text) !!}
                     </div>
