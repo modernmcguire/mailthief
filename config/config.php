@@ -16,6 +16,13 @@ return [
     'endpoint' => env('MAILTHIEF_ENDPOINT', 'emails'),
 
     /**
+     * The theme which to use
+     *
+     * Supported: tailwind, bootstrap
+     */
+    'theme' => env('MAILTHIEF_THEME', 'tailwind'),
+
+    /**
      * Middleware classes to protect the inbox.
      */
     'middleware' => [

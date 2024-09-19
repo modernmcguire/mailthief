@@ -13,16 +13,28 @@ class Inbox extends Component
     private const EMAILS_PAGE_LIMIT = 10;
 
     public $email = null;
+    public $email_id = null;
     public $search = '';
+
+    protected $queryString = [
+        'email_id',
+    ];
 
     public function mount()
     {
-        $this->email = MailThief::latest()->first()?->refresh();
+        if(!config('mailthief.theme') || !in_array(config('mailthief.theme'), ['tailwind', 'bootstrap'])) {
+            throw new \Exception('Please set MAILTHIEF_THEME in your .env. Available options: tailwind (default), bootstrap');
+        }
+
+        $this->selectEmail($this->email_id ?: MailThief::latest()->first()?->id);
     }
 
-    public function selectEmail($id)
+    public function selectEmail($id = null)
     {
-        $this->email = MailThief::find($id);
+        $this->email_id = $id;
+        $this->email = $id
+            ? MailThief::find($id)
+            : null;
     }
 
     public function updatedSearch()
@@ -44,13 +56,14 @@ class Inbox extends Component
             ->paginate(self::EMAILS_PAGE_LIMIT)
             ->onEachSide(1);
 
-        return view('mailthief::livewire.inbox', [
+
+        return view('mailthief::livewire.' . config('mailthief.theme'), [
             'emails' => $emails,
         ]);
     }
 
     public function paginationView()
     {
-        return 'mailthief::livewire.pagination.bootstrap';
+        return 'mailthief::livewire.pagination.' . config('mailthief.theme');
     }
 }
