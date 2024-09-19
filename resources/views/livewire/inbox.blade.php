@@ -1,5 +1,9 @@
 <div class="row">
     <div class="col-md-4">
+        <div>
+            {{ $emails->links() }}
+        </div>
+
         <ul class="list-group">
             @foreach ($emails as $singleEmail)
                 <li class="list-group-item" role="button" wire:click="selectEmail({{ $singleEmail->id }})" style="{{ !empty($email) && $email->id == $singleEmail->id ? 'background-color: var(--bs-gray-300)' : '' }}">
@@ -28,7 +32,7 @@
         @if($email)
             <table class="table bg-white rounded border">
                 <tr id="from">
-                    <th class="w-25">From:</td>
+                    <th class="w-25">From:</th>
                     <td>
                         @foreach($email->from as $from)
                             {{ @$from['name'] }} {{ @$from['email'] }}<br />
