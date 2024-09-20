@@ -10,6 +10,11 @@ A custom Laravel mailer that captures outbound emails, saves them to the databas
 
 ![Alt text](https://raw.githubusercontent.com/modernmcguire/mailthief/main/SCREENSHOT.png?raw=true "MailThief Screenshot")
 
+---
+
+Do you just want to track your emails and don't need to capture them? Try out [MailSpy](https://github.com/modernmcguire/mailspy).
+
+---
 
 ## Installation
 
