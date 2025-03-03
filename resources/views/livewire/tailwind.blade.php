@@ -52,9 +52,11 @@
                                                 </div>
                                             </div>
                                             <div class="w-full font-semibold text-lg">
-                                                {{ $singleEmail->subject ?? 'No Subject' }}</div>
+                                                {{ $singleEmail->subject ?? 'No Subject' }}
+                                            </div>
                                             <div class="w-full text-gray-500">
-                                                {{ Str::limit($singleEmail->text ?? strip_tags($singleEmail->html), 120, '...') }}</div>
+                                                {{ Str::limit($singleEmail->text, 120, '...') }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
