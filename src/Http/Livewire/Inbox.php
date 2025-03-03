@@ -16,6 +16,7 @@ class Inbox extends Component
     public $email_id = null;
     public $search = '';
     public $numberOfPaginatorsRendered = [];
+    public $emailLink = '';
 
     protected $queryString = [
         'email_id',
@@ -53,6 +54,11 @@ class Inbox extends Component
         MailThief::destroy($id);
 
         $this->selectEmail();
+    }
+
+    public function shareEmail($id)
+    {
+        $this->emailLink = config('app.url').'/emails?email_id='.$id;
     }
 
     public function render()

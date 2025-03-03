@@ -97,12 +97,14 @@
                                     </button>
                                     <button type="button"
                                         class="text-base whitespace-nowrap border border-gray-300 mr-8 px-6 py-2 text-sm text-black hover:text-gray-700 capitalize rounded-md"
-                                        wire:click="shareEmail({{ $email->id }})">
+                                        wire:click="shareEmail({{ $email->id }})" 
+                                        onclick="copyToClipboard()">
                                         <span class="inline-flex items-center">
                                             <img src="{{ asset('vendor/mailthief/share-link-icon.png') }}" class="h-4 w-5 mr-1" />
                                             Share Email Link
                                         </span>
                                     </button>
+                                    <input type="hidden" id="emailLink" value="{{ $emailLink }}">
                                 </div>
                             </nav>
 
@@ -174,7 +176,11 @@
                 // otherwise, set the iframe height to the document height
                 iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
             }
-
         }
+
+        function copyToClipboard() {
+            let copyText = document.getElementById("emailLink").value;
+            navigator.clipboard.writeText(copyText);
+        };
     </script>
 </div>
