@@ -99,8 +99,7 @@
                                     </button>
                                     <button type="button"
                                         class="text-base whitespace-nowrap border border-gray-300 mr-8 px-6 py-2 text-sm text-black hover:text-gray-700 capitalize rounded-md"
-                                        wire:click="shareEmail({{ $email->id }})" 
-                                        onclick="copyToClipboard()">
+                                        onclick="copyToClipboard('{{ config('app.url') }}', {{ $email->id }})">
                                         <span class="inline-flex items-center">
                                             <img src="{{ asset('vendor/mailthief/share-link-icon.png') }}" class="h-4 w-5 mr-1" />
                                             Share Email Link
@@ -180,9 +179,13 @@
             }
         }
 
-        function copyToClipboard() {
-            let copyText = document.getElementById("emailLink").value;
-            navigator.clipboard.writeText(copyText);
-        };
+        function copyToClipboard(baseUrl, emailId) {
+            let emailLink = `${baseUrl}/emails?email_id=${emailId}`;
+            navigator.clipboard.writeText(emailLink).then(function() {
+                alert("Copied the link: " + emailLink);
+            }, function(err) {
+                console.error("Could not copy text: ", err);
+            });
+        }
     </script>
 </div>
