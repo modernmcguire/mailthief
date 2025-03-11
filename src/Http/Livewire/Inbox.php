@@ -56,11 +56,6 @@ class Inbox extends Component
         $this->selectEmail();
     }
 
-    public function shareEmail($id)
-    {
-        $this->emailLink = config('app.url').'/emails?email_id='.$id;
-    }
-
     public function render()
     {
         $emails = MailThief::query()

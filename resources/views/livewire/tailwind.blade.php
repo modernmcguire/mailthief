@@ -181,9 +181,7 @@
 
         function copyToClipboard(baseUrl, emailId) {
             let emailLink = `${baseUrl}/emails?email_id=${emailId}`;
-            navigator.clipboard.writeText(emailLink).then(function() {
-                alert("Copied the link: " + emailLink);
-            }, function(err) {
+            navigator.clipboard.writeText(emailLink).then(function(err) {
                 console.error("Could not copy text: ", err);
             });
         }
