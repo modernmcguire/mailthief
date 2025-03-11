@@ -15,6 +15,8 @@ class Inbox extends Component
     public $email = null;
     public $email_id = null;
     public $search = '';
+    public $numberOfPaginatorsRendered = [];
+    public $emailLink = '';
 
     protected $queryString = [
         'email_id',
@@ -22,7 +24,7 @@ class Inbox extends Component
 
     public function mount()
     {
-        if(!config('mailthief.theme') || !in_array(config('mailthief.theme'), ['tailwind', 'bootstrap'])) {
+        if (!config('mailthief.theme') || !in_array(config('mailthief.theme'), ['tailwind', 'bootstrap'])) {
             throw new \Exception('Please set MAILTHIEF_THEME in your .env. Available options: tailwind (default), bootstrap');
         }
 
@@ -42,10 +44,22 @@ class Inbox extends Component
         $this->resetPage();
     }
 
+    public function clearSearch()
+    {
+        $this->search = '';
+    }
+
+    public function deleteEmail($id)
+    {
+        MailThief::destroy($id);
+
+        $this->selectEmail();
+    }
+
     public function render()
     {
         $emails = MailThief::query()
-            ->when($this->search, function($query, $search) {
+            ->when($this->search, function ($query, $search) {
                 return $query
                     ->where('subject', 'like', "%{$search}%")
                     ->orWhere('text', 'like', "%{$search}%")
