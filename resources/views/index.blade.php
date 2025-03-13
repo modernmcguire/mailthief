@@ -11,7 +11,7 @@
     <livewire:mailthief::inbox />
     @livewireScripts()
     @php
-    $version = InstalledVersions::getVersion('livewire/livewire');
+    $version = Composer\InstalledVersions::getVersion('livewire/livewire');
 
     if (strpos($version, '2.') === 0) {
         echo '<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/alpine.min.js"></script>';
