@@ -10,6 +10,12 @@
 <body class="bg-light bg-gray-100">
     <livewire:mailthief::inbox />
     @livewireScripts()
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @php
+    $version = InstalledVersions::getVersion('livewire/livewire');
+
+    if (strpos($version, '2.') === 0) {
+        echo '<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/alpine.min.js"></script>';
+    }
+    @endphp
 </body>
 </html>
