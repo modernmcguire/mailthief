@@ -7,7 +7,7 @@
     <title>MailThief Inbox</title>
     @livewireStyles()
 </head>
-<body class="bg-light bg-gray-100">
+<body class="bg-light">
     <livewire:mailthief::inbox />
     @livewireScripts()
     @php
