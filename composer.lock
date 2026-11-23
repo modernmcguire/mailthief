@@ -1987,16 +1987,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v4.4.9",
+            "version": "v3.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "4daad339bc7a572946d48efaf2955030c94daf80"
+                "reference": "4193052b05938d40445270138a09e70a855ef6c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/4daad339bc7a572946d48efaf2955030c94daf80",
-                "reference": "4daad339bc7a572946d48efaf2955030c94daf80",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/4193052b05938d40445270138a09e70a855ef6c4",
+                "reference": "4193052b05938d40445270138a09e70a855ef6c4",
                 "shasum": ""
             },
             "require": {
@@ -2051,7 +2051,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v4.4.9"
+                "source": "https://github.com/livewire/livewire/tree/v3.8.12"
             },
             "funding": [
                 {
@@ -2059,8 +2059,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-21T01:02:00+00:00",
-            "published-time": "2026-11-21T01:10:35+00:00"
+            "time": "2026-11-21T00:39:22+00:00",
+            "published-time": "2026-11-21T01:10:26+00:00"
         },
         {
             "name": "monolog/monolog",
